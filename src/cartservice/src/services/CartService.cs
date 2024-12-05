@@ -33,6 +33,11 @@ public class CartService : Oteldemo.CartService.CartServiceBase
         activity?.SetTag("app.product.id", request.Item.ProductId);
         activity?.SetTag("app.product.quantity", request.Item.Quantity);
 
+        if(request.Item.ProductId == "HQTGWGPNH4")
+        {
+            await Task.Delay(800); // Add 800ms delay for this specific product
+        }
+
         try
         {
             await _cartStore.AddItemAsync(request.UserId, request.Item.ProductId, request.Item.Quantity);
