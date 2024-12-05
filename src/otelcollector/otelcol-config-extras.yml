@@ -8,9 +8,16 @@
 ## Note: the spanmetrics exporter must be included in the exporters array
 ## if overriding the traces pipeline.
 ##
-#  exporters:
-#    otlphttp/example:
-#      endpoint: <your-endpoint-url>
+  exporters:
+    otlp/honeycomb:
+      endpoint: https://api.honeycomb.io:443
+      headers:
+        "x-honeycomb-team": ""
+
+processors:
+  probabilistic_sampler:
+    sampling_percentage: 5 # Samples 5% of traces
+
 #
 #  service:
 #    pipelines:
